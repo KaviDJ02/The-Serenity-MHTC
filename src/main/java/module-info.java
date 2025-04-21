@@ -8,10 +8,11 @@ module live.kavinduj.theserenitymhtc {
     requires java.naming;
     requires java.sql;
 
-
     exports live.kavinduj.theserenitymhtc.controller to javafx.fxml;
     opens live.kavinduj.theserenitymhtc to javafx.fxml;
     exports live.kavinduj.theserenitymhtc;
     exports live.kavinduj.theserenitymhtc.bo;
     opens live.kavinduj.theserenitymhtc.bo to javafx.fxml;
+    opens live.kavinduj.theserenitymhtc.entity to org.hibernate.orm.core;
+    opens live.kavinduj.theserenitymhtc.controller to javafx.fxml;
 }

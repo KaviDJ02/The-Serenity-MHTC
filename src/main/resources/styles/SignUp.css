@@ -1,0 +1,37 @@
+.mainAnchor {
+    -fx-background-color: #f5f5f5;
+}
+
+Rectangle {
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, #00c832, #00b4c3);
+}
+
+Text {
+    -fx-fill: white;
+}
+
+.form-container {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 30;
+}
+
+.input-field {
+    -fx-background-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+}
+
+.button {
+    -fx-background-color: #388e3c;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #66bb6a;
+}
+
+Text[text="Sign in"] {
+    -fx-fill: #388e3c;
+    -fx-cursor: hand;
+}

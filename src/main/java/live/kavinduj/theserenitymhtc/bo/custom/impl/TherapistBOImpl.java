@@ -72,6 +72,12 @@ public class TherapistBOImpl implements TherapistBO {
         );
     }
 
+    @Override
+    public TherapistDTO getAllTherapist(String therapistName) {
+        Therapist therapist = therapistDAO.getAllTherapist(therapistName);
+        return toDTO(therapist);
+    }
+
     public static Therapist toEntity(TherapistDTO therapistDTO) {
         if (therapistDTO == null) {
             return null;

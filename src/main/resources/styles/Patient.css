@@ -1,0 +1,50 @@
+.root {
+    -fx-background-color: white;
+}
+
+.label {
+    -fx-text-fill: #2e7d32;
+    -fx-font-size: 13px;
+}
+
+.label:focused {
+    -fx-text-fill: #1b5e20;
+}
+
+.text-field,
+.combo-box,
+.date-picker {
+    -fx-border-color: #81c784;
+    -fx-border-width: 1;
+    -fx-background-color: #f9f9f9;
+    -fx-text-fill: #2e7d32;
+}
+
+.button {
+    -fx-background-color: #43a047;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #388e3c;
+}
+
+.table-view {
+    -fx-border-color: #c8e6c9;
+    -fx-table-cell-border-color: #c8e6c9;
+    -fx-background-color: white;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #a5d6a7;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #a5d6a7;
+    -fx-text-fill: white;
+}
+
+.table-view .cell {
+    -fx-text-fill: #2e7d32;
+}

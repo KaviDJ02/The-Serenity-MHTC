@@ -1,0 +1,29 @@
+.sidebar {
+    -fx-background-color: #2e7d32;
+}
+
+.header {
+    -fx-background-color: #1b5e20;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #388e3c;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: #66bb6a;
+}
+
+.footer {
+    -fx-background-color: #1b5e20;
+}
+
+.sidebar-button:focused {
+    -fx-background-color: #388e3c;
+}

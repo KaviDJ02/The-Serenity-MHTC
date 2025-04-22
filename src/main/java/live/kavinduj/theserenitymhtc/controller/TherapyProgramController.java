@@ -1,7 +1,5 @@
 package live.kavinduj.theserenitymhtc.controller;
 
-import live.kavinduj.theserenitymhtc.bo.BOFactory;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapyProgramBOImpl;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -11,6 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import live.kavinduj.theserenitymhtc.bo.BOFactory;
+import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapistBOImpl;
+import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapyProgramBOImpl;
 import live.kavinduj.theserenitymhtc.dto.TherapyProgramDTO;
 
 import java.net.URL;
@@ -67,6 +68,7 @@ public class TherapyProgramController implements Initializable {
     private String id;
 
     private final TherapyProgramBOImpl therapyProgramBO = (TherapyProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPY_PROGRAM);
+    private final TherapistBOImpl therapistBO = (TherapistBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPIST);
 
     @FXML
     void addTherapyProgram(ActionEvent event) {
@@ -86,6 +88,7 @@ public class TherapyProgramController implements Initializable {
         therapyProgramDTO.setDuration(duration);
         therapyProgramDTO.setFee(Double.parseDouble(fee));
 
+
         boolean isAdded = therapyProgramBO.save(therapyProgramDTO);
 
         if(isAdded){
@@ -95,7 +98,7 @@ public class TherapyProgramController implements Initializable {
             txtName.clear();
             txtDuration.clear();
             txtFee.clear();
-
+            selectTime.setValue(null);
             loadTherapyProgramTable();
         }else{
             errorMessage.setText("Failed to add Therapy Program");
@@ -136,8 +139,6 @@ public class TherapyProgramController implements Initializable {
         if (selectedPatient != null) {
             lblProgramId.setText(selectedPatient.getProgramId());
             txtName.setText(selectedPatient.getName());
-
-
             String duration = selectedPatient.getDuration();
             String[] parts = duration.split(" ");
             txtDuration.setText(parts[0]);
@@ -174,7 +175,6 @@ public class TherapyProgramController implements Initializable {
             txtDuration.clear();
             txtFee.clear();
             selectTime.setValue(null);
-
             loadTherapyProgramTable();
         }else{
             errorMessage.setText("Failed to update Therapy Program");
@@ -192,7 +192,6 @@ public class TherapyProgramController implements Initializable {
         colName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         colDuration.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDuration()));
         colFee.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getFee()));
-
         loadTherapyProgramTable();
     }
 

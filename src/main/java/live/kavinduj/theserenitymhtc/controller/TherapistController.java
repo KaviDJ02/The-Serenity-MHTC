@@ -1,7 +1,5 @@
 package live.kavinduj.theserenitymhtc.controller;
 
-import live.kavinduj.theserenitymhtc.bo.BOFactory;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapistBOImpl;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,9 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import live.kavinduj.theserenitymhtc.bo.BOFactory;
+import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapistBOImpl;
+import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapyProgramBOImpl;
 import live.kavinduj.theserenitymhtc.dto.TherapistDTO;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -49,20 +51,21 @@ public class TherapistController implements Initializable {
     private TableView<TherapistDTO> tblTherapists;
 
     @FXML
-    private TextField txtName;
+    private ChoiceBox<String> specializationChoice;
 
     @FXML
-    private TextField txtSpecialization;
+    private TextField txtName;
 
     private String id;
 
     private final TherapistBOImpl therapistBO = (TherapistBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPIST);
+    private final TherapyProgramBOImpl therapyProgramBO = (TherapyProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPY_PROGRAM);
 
     @FXML
     void addTherapist(ActionEvent event) {
         String id = this.id;
         String name = txtName.getText();
-        String specialization = txtSpecialization.getText();
+        String specialization = specializationChoice.getValue();
 
         if(name.isEmpty() || specialization.isEmpty()){
             errorMessage.setText("Please fill all the fields");
@@ -78,8 +81,9 @@ public class TherapistController implements Initializable {
 
         if(isAdded){
             txtName.clear();
-            txtSpecialization.clear();
+            specializationChoice.setValue(null);
             this.id = String.valueOf(therapistBO.getLastPK().orElse("Error"));
+            loadTherapistTable();
         }else{
             errorMessage.setText("Failed to add therapist");
         }
@@ -92,8 +96,8 @@ public class TherapistController implements Initializable {
 
         if (isDeleted) {
             txtName.clear();
-            txtSpecialization.clear();
-            txtSpecialization.setDisable(false);
+            specializationChoice.setValue(null);
+            specializationChoice.setDisable(false);
             lblTherapistId.setText(id);
             loadTherapistTable();
         } else {
@@ -104,8 +108,8 @@ public class TherapistController implements Initializable {
     @FXML
     void resetForm(ActionEvent event) {
         txtName.clear();
-        txtSpecialization.clear();
-        txtSpecialization.setDisable(false);
+        specializationChoice.setValue(null);
+        specializationChoice.setDisable(false);
         lblTherapistId.setText(id);
     }
 
@@ -115,8 +119,8 @@ public class TherapistController implements Initializable {
         if (selectedTherapist != null) {
             lblTherapistId.setText(selectedTherapist.getId());
             txtName.setText(selectedTherapist.getName());
-            txtSpecialization.setText(selectedTherapist.getSpecialization());
-            txtSpecialization.setDisable(true);
+            specializationChoice.setValue(selectedTherapist.getSpecialization());
+            specializationChoice.setDisable(true);
         }
     }
 
@@ -124,8 +128,8 @@ public class TherapistController implements Initializable {
     void updateTherapist(ActionEvent event) {
         String id = lblTherapistId.getText();
         String name = txtName.getText();
-        txtSpecialization.setDisable(true);
-        String specialization = txtSpecialization.getText();
+        specializationChoice.setDisable(true);
+        String specialization = specializationChoice.getValue();
 
         if(name.isEmpty() || specialization.isEmpty()){
             errorMessage.setText("Please fill all the fields");
@@ -141,8 +145,8 @@ public class TherapistController implements Initializable {
 
         if(isUpdated){
             txtName.clear();
-            txtSpecialization.clear();
-            txtSpecialization.setDisable(false);
+            specializationChoice.setValue(null);
+            specializationChoice.setDisable(false);
             loadTherapistTable();
         }else{
             errorMessage.setText("Failed to update therapist");
@@ -153,6 +157,10 @@ public class TherapistController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.id = String.valueOf(therapistBO.getLastPK().orElse("Error"));
         lblTherapistId.setText(id);
+
+        ArrayList<String> programList = therapyProgramBO.getProgramList();
+        System.out.println(programList);
+        specializationChoice.getItems().addAll(programList);
 
         colId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
         colName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));

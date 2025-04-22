@@ -1,9 +1,11 @@
 package live.kavinduj.theserenitymhtc.bo.custom;
 
+
 import live.kavinduj.theserenitymhtc.bo.SuperBO;
 import live.kavinduj.theserenitymhtc.dto.TherapyProgramDTO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +18,6 @@ public interface TherapyProgramBO extends SuperBO {
     Optional<TherapyProgramDTO> findByPK(String pk);
     Optional<String> getLastPK();
     boolean exist(String id) throws SQLException, ClassNotFoundException;
-
+    ArrayList<String> getProgramList();
+    TherapyProgramDTO getAllTherapyProgram(String programName);
 }

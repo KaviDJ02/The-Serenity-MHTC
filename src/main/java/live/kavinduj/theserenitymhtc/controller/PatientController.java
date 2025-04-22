@@ -1,6 +1,5 @@
 package live.kavinduj.theserenitymhtc.controller;
 
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,7 +50,7 @@ public class PatientController implements Initializable {
     private TableColumn<PatientDTO, String> colRegDate;
 
     @FXML
-    private DatePicker dpRegDate;
+    private Label dpRegDate;
 
     @FXML
     private Label errorMessage;
@@ -82,7 +81,7 @@ public class PatientController implements Initializable {
 
         String gender = cmbGender.getValue();
 
-        String regDate = dpRegDate.getValue().toString();
+        String regDate = dpRegDate.getText();
 
         if(name.isEmpty() || contact.isEmpty() || gender.isEmpty() || regDate.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -118,7 +117,7 @@ public class PatientController implements Initializable {
             txtName.clear();
             txtContact.clear();
             cmbGender.setValue(null);
-            dpRegDate.setValue(null);
+            dpRegDate.setText(null);
             this.id = String.valueOf(patientBO.getLastPK().orElse("Error"));
             loadPatientTable();
         } else {
@@ -136,7 +135,7 @@ public class PatientController implements Initializable {
             txtName.clear();
             txtContact.clear();
             cmbGender.setValue(null);
-            dpRegDate.setValue(null);
+            dpRegDate.setText(null);
             lblPatientId.setText(id);
             dpRegDate.setDisable(false);
             loadPatientTable();
@@ -159,9 +158,9 @@ public class PatientController implements Initializable {
             dpRegDate.setDisable(true);
 
             if (selectedPatient.getBirthDate() != null && !selectedPatient.getBirthDate().isEmpty()) {
-                dpRegDate.setValue(LocalDate.parse(selectedPatient.getBirthDate()));
+                dpRegDate.setText(String.valueOf(LocalDate.parse(selectedPatient.getBirthDate())));
             } else {
-                dpRegDate.setValue(null);
+                dpRegDate.setText(null);
             }
         }
     }
@@ -173,7 +172,7 @@ public class PatientController implements Initializable {
         txtName.clear();
         txtContact.clear();
         cmbGender.setValue(null);
-        dpRegDate.setValue(null);
+        dpRegDate.setText(LocalDate.now().toString());
         lblPatientId.setText(id);
         dpRegDate.setDisable(false);
     }
@@ -189,7 +188,7 @@ public class PatientController implements Initializable {
 
         String gender = cmbGender.getValue();
 
-        String regDate = dpRegDate.getValue().toString();
+        String regDate = dpRegDate.getText();
 
 
         if(name.isEmpty() || contact.isEmpty() || gender.isEmpty() || regDate.isEmpty()){
@@ -224,12 +223,12 @@ public class PatientController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Invalid contact number");
             alert.show();
-            return;
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        dpRegDate.setText(String.valueOf(LocalDate.now()));
         cmbGender.getItems().addAll("Male", "Female");
         this.id = String.valueOf(patientBO.getLastPK().orElse("Error"));
         lblPatientId.setText(id);
@@ -246,20 +245,8 @@ public class PatientController implements Initializable {
     }
 
     private void loadPatientTable() {
-
         List<PatientDTO> patientList = patientBO.getAll();
-
-        for (PatientDTO patient : patientList) {
-            System.out.println("ID: " + patient.getId());
-            System.out.println("Name: " + patient.getName());
-            System.out.println("Contact Info: " + patient.getContactInfo());
-            System.out.println("Gender: " + patient.getGender());
-            System.out.println("Birth Date: " + patient.getBirthDate());
-            System.out.println("-------------------------------");
-        }
-
         ObservableList<PatientDTO> patientTMS = FXCollections.observableArrayList(patientList);
-
         tblPatients.setItems(patientTMS);
     }
 

@@ -1,7 +1,6 @@
 package live.kavinduj.theserenitymhtc.bo;
 
 import live.kavinduj.theserenitymhtc.bo.custom.impl.*;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.PatientBOImpl;
 
 public class BOFactory {
 

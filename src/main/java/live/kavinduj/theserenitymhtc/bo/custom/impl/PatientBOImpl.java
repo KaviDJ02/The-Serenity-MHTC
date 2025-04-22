@@ -6,7 +6,6 @@ import live.kavinduj.theserenitymhtc.dao.custom.impl.PatientDAOImpl;
 import live.kavinduj.theserenitymhtc.dto.PatientDTO;
 import live.kavinduj.theserenitymhtc.entity.Patient;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,7 @@ public class PatientBOImpl implements PatientBO {
         }
         return users;
     }
-
+    
     @Override
     public Optional<PatientDTO> findByPK(String pk) {
         return Optional.empty();

@@ -1,7 +1,5 @@
 package live.kavinduj.theserenitymhtc.controller;
 
-import live.kavinduj.theserenitymhtc.bo.BOFactory;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.UserBOImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import live.kavinduj.theserenitymhtc.bo.BOFactory;
+import live.kavinduj.theserenitymhtc.bo.custom.impl.UserBOImpl;
 import live.kavinduj.theserenitymhtc.dto.UserDTO;
 import live.kavinduj.theserenitymhtc.util.PasswordUtils;
 

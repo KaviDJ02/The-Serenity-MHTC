@@ -1,13 +1,5 @@
 package live.kavinduj.theserenitymhtc.controller;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import live.kavinduj.theserenitymhtc.bo.BOFactory;
 import live.kavinduj.theserenitymhtc.bo.custom.impl.PatientBOImpl;
 import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapistBOImpl;
@@ -17,6 +9,14 @@ import live.kavinduj.theserenitymhtc.dto.PatientDTO;
 import live.kavinduj.theserenitymhtc.dto.TherapistDTO;
 import live.kavinduj.theserenitymhtc.dto.TherapyProgramDTO;
 import live.kavinduj.theserenitymhtc.dto.TherapySessionDTO;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;

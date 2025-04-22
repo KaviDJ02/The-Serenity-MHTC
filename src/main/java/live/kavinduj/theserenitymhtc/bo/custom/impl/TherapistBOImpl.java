@@ -1,5 +1,7 @@
 package live.kavinduj.theserenitymhtc.bo.custom.impl;
 
+
+
 import live.kavinduj.theserenitymhtc.bo.custom.TherapistBO;
 import live.kavinduj.theserenitymhtc.dao.DAOFactory;
 import live.kavinduj.theserenitymhtc.dao.custom.impl.TherapistDAOImpl;
@@ -61,6 +63,17 @@ public class TherapistBOImpl implements TherapistBO {
         return false;
     }
 
+    @Override
+    public ArrayList<String> therapistList() {
+        return therapistDAO.therapistList();
+    }
+
+    @Override
+    public TherapistDTO getAllTherapist(String therapistName) {
+        Therapist therapist = therapistDAO.getAllTherapist(therapistName);
+        return toDTO(therapist);
+    }
+
     public static TherapistDTO toDTO(Therapist therapist) {
         if (therapist == null) {
             return null;
@@ -70,12 +83,6 @@ public class TherapistBOImpl implements TherapistBO {
                 therapist.getName(),
                 therapist.getSpecialization()
         );
-    }
-
-    @Override
-    public TherapistDTO getAllTherapist(String therapistName) {
-        Therapist therapist = therapistDAO.getAllTherapist(therapistName);
-        return toDTO(therapist);
     }
 
     public static Therapist toEntity(TherapistDTO therapistDTO) {

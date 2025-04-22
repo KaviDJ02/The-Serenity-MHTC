@@ -50,7 +50,7 @@ public class PatientController implements Initializable {
     private TableColumn<PatientDTO, String> colRegDate;
 
     @FXML
-    private Label dpRegDate;
+    private DatePicker dpRegDate;
 
     @FXML
     private Label errorMessage;
@@ -81,7 +81,7 @@ public class PatientController implements Initializable {
 
         String gender = cmbGender.getValue();
 
-        String regDate = dpRegDate.getText();
+        String regDate = dpRegDate.getValue() != null ? dpRegDate.getValue().toString() : "";
 
         if(name.isEmpty() || contact.isEmpty() || gender.isEmpty() || regDate.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -117,7 +117,7 @@ public class PatientController implements Initializable {
             txtName.clear();
             txtContact.clear();
             cmbGender.setValue(null);
-            dpRegDate.setText(null);
+            dpRegDate.setValue(null);
             this.id = String.valueOf(patientBO.getLastPK().orElse("Error"));
             loadPatientTable();
         } else {
@@ -135,7 +135,7 @@ public class PatientController implements Initializable {
             txtName.clear();
             txtContact.clear();
             cmbGender.setValue(null);
-            dpRegDate.setText(null);
+            dpRegDate.setValue(null);
             lblPatientId.setText(id);
             dpRegDate.setDisable(false);
             loadPatientTable();
@@ -158,9 +158,9 @@ public class PatientController implements Initializable {
             dpRegDate.setDisable(true);
 
             if (selectedPatient.getBirthDate() != null && !selectedPatient.getBirthDate().isEmpty()) {
-                dpRegDate.setText(String.valueOf(LocalDate.parse(selectedPatient.getBirthDate())));
+                dpRegDate.setValue(LocalDate.parse(selectedPatient.getBirthDate()));
             } else {
-                dpRegDate.setText(null);
+                dpRegDate.setValue(null);
             }
         }
     }
@@ -172,7 +172,7 @@ public class PatientController implements Initializable {
         txtName.clear();
         txtContact.clear();
         cmbGender.setValue(null);
-        dpRegDate.setText(LocalDate.now().toString());
+        dpRegDate.setValue(LocalDate.now());
         lblPatientId.setText(id);
         dpRegDate.setDisable(false);
     }
@@ -188,7 +188,7 @@ public class PatientController implements Initializable {
 
         String gender = cmbGender.getValue();
 
-        String regDate = dpRegDate.getText();
+        String regDate = dpRegDate.getValue() != null ? dpRegDate.getValue().toString() : "";;
 
 
         if(name.isEmpty() || contact.isEmpty() || gender.isEmpty() || regDate.isEmpty()){
@@ -228,7 +228,7 @@ public class PatientController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dpRegDate.setText(String.valueOf(LocalDate.now()));
+        dpRegDate.setValue(LocalDate.now());
         cmbGender.getItems().addAll("Male", "Female");
         this.id = String.valueOf(patientBO.getLastPK().orElse("Error"));
         lblPatientId.setText(id);

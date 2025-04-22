@@ -26,6 +26,12 @@ public class AdminDashController {
     private Label therapistsCount;
 
     @FXML
+    void initialize() throws IOException {
+        loadPageAnchor.getChildren().clear();
+        loadPageAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/DashBoard.fxml")));
+    }
+
+    @FXML
     void navAppoinments(ActionEvent event) throws IOException {
         loadPageAnchor.getChildren().clear();
         loadPageAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/TherapySession.fxml")));

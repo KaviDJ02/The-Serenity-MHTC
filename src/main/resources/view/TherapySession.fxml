@@ -27,9 +27,6 @@
                     <padding>
                         <Insets bottom="5.0" />
                     </padding>
-                    <graphic>
-                        <HBox prefHeight="2.0" prefWidth="80.0" style="-fx-background-color: #3498db;" />
-                    </graphic>
                 </Label>
 
                 <!-- Session Scheduling Form -->

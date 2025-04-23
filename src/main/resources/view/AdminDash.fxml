@@ -11,16 +11,13 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="1000.0" stylesheets="@../styles/AdminDash.css"
-            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="live.kavinduj.theserenitymhtc.controller.AdminDashController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../styles/AdminDash.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="live.kavinduj.theserenitymhtc.controller.AdminDashController">
     <children>
-        <VBox prefHeight="600.0" prefWidth="200.0" fx:id="sideBar">
+        <VBox fx:id="sideBar" prefHeight="600.0" prefWidth="200.0">
             <children>
-                <HBox alignment="CENTER" prefHeight="70.0" fx:id="headerBox">
+                <HBox fx:id="headerBox" alignment="CENTER" prefHeight="70.0">
                     <children>
-                        <Label text="Therapy Center" fx:id="titleLabel">
+                        <Label fx:id="titleLabel" text="Therapy Center">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
@@ -32,9 +29,7 @@
                         <Insets top="10.0" />
                     </padding>
                     <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity"
-                                mnemonicParsing="false" onAction="#navDash" prefHeight="45.0"
-                                text="Dashboard" fx:id="dashboardBtn">
+                        <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity" mnemonicParsing="false" onAction="#navDash" prefHeight="45.0" text="Dashboard">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -42,9 +37,7 @@
                                 <Insets left="20.0" />
                             </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity"
-                                mnemonicParsing="false" onAction="#navAppoinments" prefHeight="45.0"
-                                text="Appointments" fx:id="appointmentsBtn">
+                        <Button fx:id="appointmentsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity" mnemonicParsing="false" onAction="#navAppoinments" prefHeight="45.0" text="Appointments">
                             <font>
                                 <Font size="12.0" />
                             </font>
@@ -52,9 +45,7 @@
                                 <Insets left="20.0" />
                             </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity"
-                                mnemonicParsing="false" onAction="#navPatitnt" prefHeight="45.0"
-                                text="Patients" fx:id="patientsBtn">
+                        <Button fx:id="patientsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity" mnemonicParsing="false" onAction="#navPatitnt" prefHeight="45.0" text="Patients">
                             <font>
                                 <Font size="12.0" />
                             </font>
@@ -62,9 +53,7 @@
                                 <Insets left="20.0" />
                             </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity"
-                                mnemonicParsing="false" onAction="#navTherapist" prefHeight="45.0"
-                                text="Therapists" fx:id="therapistsBtn">
+                        <Button fx:id="therapistsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity" mnemonicParsing="false" onAction="#navTherapist" prefHeight="45.0" text="Therapists">
                             <font>
                                 <Font size="12.0" />
                             </font>
@@ -72,9 +61,7 @@
                                 <Insets left="20.0" />
                             </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity"
-                                mnemonicParsing="false" onAction="#navPrograms" prefHeight="45.0"
-                                text="Programs" fx:id="programsBtn">
+                        <Button fx:id="programsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity" mnemonicParsing="false" onAction="#navPrograms" prefHeight="45.0" text="Programs">
                             <font>
                                 <Font size="12.0" />
                             </font>
@@ -82,9 +69,7 @@
                                 <Insets left="20.0" />
                             </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity"
-                                mnemonicParsing="false" onAction="#navBilling" prefHeight="45.0"
-                                text="Billing" fx:id="billingBtn">
+                        <Button fx:id="billingBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity" mnemonicParsing="false" onAction="#navBilling" prefHeight="45.0" text="Billing">
                             <font>
                                 <Font size="12.0" />
                             </font>
@@ -92,9 +77,7 @@
                                 <Insets left="20.0" />
                             </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity"
-                                mnemonicParsing="false" onAction="#navReports" prefHeight="45.0"
-                                text="Reports" fx:id="reportsBtn">
+                        <Button fx:id="reportsBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="Infinity" mnemonicParsing="false" onAction="#navReports" prefHeight="45.0" text="Reports">
                             <font>
                                 <Font size="12.0" />
                             </font>
@@ -104,17 +87,17 @@
                         </Button>
                     </children>
                 </VBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="50.0" fx:id="footerBox">
+                <HBox fx:id="footerBox" alignment="CENTER_LEFT" prefHeight="50.0">
                     <children>
                         <Region prefHeight="50.0" prefWidth="15.0" />
                         <VBox>
                             <children>
-                                <Label text="Admin User" fx:id="adminLabel">
+                                <Label fx:id="adminLabel" text="Admin User">
                                     <font>
                                         <Font name="System Bold" size="12.0" />
                                     </font>
                                 </Label>
-                                <Label text="Logout" fx:id="logoutLabel">
+                                <Label fx:id="logoutLabel" onMouseClicked="#logoutOnAction" text="Logout">
                                     <font>
                                         <Font size="10.0" />
                                     </font>

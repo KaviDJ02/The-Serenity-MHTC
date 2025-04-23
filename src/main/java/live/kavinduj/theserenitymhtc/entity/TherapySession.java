@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 public class TherapySession implements SuperEntity{
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String date;
     private String time;

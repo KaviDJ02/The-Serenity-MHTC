@@ -1,14 +1,8 @@
 package live.kavinduj.theserenitymhtc.controller;
 
 import live.kavinduj.theserenitymhtc.bo.BOFactory;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.PatientBOImpl;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapistBOImpl;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapyProgramBOImpl;
-import live.kavinduj.theserenitymhtc.bo.custom.impl.TherapySessionBOImpl;
-import live.kavinduj.theserenitymhtc.dto.PatientDTO;
-import live.kavinduj.theserenitymhtc.dto.TherapistDTO;
-import live.kavinduj.theserenitymhtc.dto.TherapyProgramDTO;
-import live.kavinduj.theserenitymhtc.dto.TherapySessionDTO;
+import live.kavinduj.theserenitymhtc.bo.custom.impl.*;
+import live.kavinduj.theserenitymhtc.dto.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -85,6 +79,8 @@ public class TherapySessionController implements Initializable {
     private final PatientBOImpl patientBO = (PatientBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PATIENT);
     private final TherapistBOImpl therapistBO = (TherapistBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPIST);
     private final TherapyProgramBOImpl therapyProgramBO = (TherapyProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPY_PROGRAM);
+    private final PaymentBOImpl paymentBO = (PaymentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PAYMENT);
+    private final PaymentSessionBOImpl paymentSessionBO = (PaymentSessionBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PAYMENT_SESSION);
 
     private PatientDTO patientDTO = new PatientDTO();
     private TherapistDTO therapistDTO = new TherapistDTO();
@@ -135,7 +131,20 @@ public class TherapySessionController implements Initializable {
         therapySessionDTO.setTherapist(therapistDTO);
         therapySessionDTO.setTherapyProgram(therapyProgramDTO);
 
-        therapySessionBO.save(therapySessionDTO);
+        //therapySessionBO.save(therapySessionDTO);
+
+        PaymentDTO paymentDTO = new PaymentDTO();
+        paymentDTO.setId(paymentBO.getLastPK().orElse("1"));
+        paymentDTO.setAmount(therapyProgramBO.getAmount(programName));
+        paymentDTO.setDate(date);
+        paymentDTO.setStatus("Pending");
+        paymentDTO.setPatient(patientDTO);
+        paymentDTO.setTherapySession(therapySessionDTO);
+
+        paymentSessionBO.saveSession(therapySessionDTO,paymentDTO);
+
+        //paymentBO.save(paymentDTO);
+
         loadTherapyProgramTable();
     }
 

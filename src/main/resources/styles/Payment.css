@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: #ffffff;
+    -fx-background-color: white;
 }
 
 .label {
@@ -8,38 +8,47 @@
 }
 
 .button {
-    -fx-background-color: #2e7d32;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #43a047;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 5;
 }
 
 .button:hover {
-    -fx-background-color: #1b5e20;
+    -fx-background-color: #388e3c;
 }
 
-.text-field {
-    -fx-border-color: #2e7d32;
-    -fx-border-radius: 3;
-    -fx-background-radius: 3;
+.button:pressed {
+    -fx-background-color: #2e7d32;
 }
 
-.choice-box {
-    -fx-border-color: #2e7d32;
+.text-field, .choice-box, .date-picker {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #81c784;
+    -fx-border-width: 1;
     -fx-border-radius: 3;
     -fx-background-radius: 3;
-}
-
-.date-picker {
-    -fx-border-color: #2e7d32;
-    -fx-border-radius: 3;
-    -fx-background-radius: 3;
+    -fx-text-fill: #2e7d32;
 }
 
 .table-view {
-    -fx-border-color: #2e7d32;
-    -fx-table-cell-border-color: #2e7d32;
-    -fx-background-color: #ffffff;
+    -fx-background-color: white;
+    -fx-border-color: #c8e6c9;
+    -fx-table-cell-border-color: #c8e6c9;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #a5d6a7;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #a5d6a7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .cell {
+    -fx-text-fill: #2e7d32;
 }
 
 .table-column {
@@ -47,5 +56,5 @@
 }
 
 .error-label {
-    -fx-text-fill: #c62828;
+    -fx-text-fill: #e74c3c;
 }

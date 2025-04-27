@@ -1,15 +1,25 @@
 package live.kavinduj.theserenitymhtc.controller;
 
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import live.kavinduj.theserenitymhtc.bo.BOFactory;
 import live.kavinduj.theserenitymhtc.bo.custom.impl.PaymentBOImpl;
+import live.kavinduj.theserenitymhtc.bo.custom.impl.PaymentSessionBOImpl;
 import live.kavinduj.theserenitymhtc.dto.PaymentDTO;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PaymentController implements Initializable {
@@ -19,9 +29,6 @@ public class PaymentController implements Initializable {
 
     @FXML
     private Button btnReset;
-
-    @FXML
-    private Button btnUpdate;
 
     @FXML
     private TableColumn<PaymentDTO, String> colAmount;
@@ -39,61 +46,74 @@ public class PaymentController implements Initializable {
     private TableColumn<PaymentDTO, String> colSession;
 
     @FXML
-    private DatePicker datePickerPayment;
-
-    @FXML
-    private Label errorMessage;
+    private TableColumn<PaymentDTO, String> colStatus;
 
     @FXML
     private Label lblPaymentId;
 
     @FXML
-    private ChoiceBox<String> selectPatient;
-
-    @FXML
-    private ChoiceBox<String> selectSession;
-
-    @FXML
     private TableView<PaymentDTO> tblPayments;
 
     @FXML
-    private TextField txtAmount;
-
-
-    private final PaymentBOImpl paymentBO = (PaymentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PAYMENT);
+    private Label lblAmount;
 
     @FXML
-    void generateInvoice(ActionEvent event) {
+    private Label lblDate;
 
-    }
+    @FXML
+    private Label lblSession;
+
+    @FXML
+    private Label lblPatient;
+
+    private final PaymentBOImpl paymentBO = (PaymentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PAYMENT);
+    private final PaymentSessionBOImpl paymentSessionBO = (PaymentSessionBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PAYMENT_SESSION);
 
     @FXML
     void paymentSelectOnAction(MouseEvent event) {
-
-    }
-
-    @FXML
-    void printInvoice(ActionEvent event) {
-
+        PaymentDTO selectedPayment = tblPayments.getSelectionModel().getSelectedItem();
+        if (selectedPayment != null) {
+            lblPaymentId.setText(selectedPayment.getId());
+            lblAmount.setText(String.valueOf(selectedPayment.getAmount()));
+            lblDate.setText(String.valueOf(selectedPayment.getDate()));
+            lblSession.setText(selectedPayment.getTherapySession().getId());
+            lblPatient.setText(selectedPayment.getPatient().getId());
+        }
     }
 
     @FXML
     void processPayment(ActionEvent event) {
+        String paymentId = lblPaymentId.getText();
+        String sessionId = lblSession.getText();
 
+        paymentSessionBO.updateSession(sessionId ,paymentId);
+        loadPatientTable();
     }
 
     @FXML
     void resetForm(ActionEvent event) {
-
-    }
-
-    @FXML
-    void updatePayment(ActionEvent event) {
-
+        lblPaymentId.setText("");
+        lblAmount.setText("");
+        lblDate.setText("");
+        lblSession.setText("");
+        lblPatient.setText("");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lblPaymentId.setText(paymentBO.getLastPK().orElse("0"));
+        colPaymentId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        colAmount.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAmount())));
+        colDate.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getDate())));
+        colStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
+        colPatient.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPatient().getId()));
+        colSession.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTherapySession().getId()));
+
+        loadPatientTable();
+    }
+
+    private void loadPatientTable() {
+        List<PaymentDTO> paymentList = paymentBO.getAll();
+        ObservableList<PaymentDTO> paymentTMS = FXCollections.observableArrayList(paymentList);
+        tblPayments.setItems(paymentTMS);
     }
 }

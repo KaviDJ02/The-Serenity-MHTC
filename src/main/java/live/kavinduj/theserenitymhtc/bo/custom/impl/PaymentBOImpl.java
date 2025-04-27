@@ -1,13 +1,17 @@
 package live.kavinduj.theserenitymhtc.bo.custom.impl;
 
-
-
 import live.kavinduj.theserenitymhtc.bo.custom.PaymentBO;
 import live.kavinduj.theserenitymhtc.dao.DAOFactory;
 import live.kavinduj.theserenitymhtc.dao.custom.impl.PaymentDAOImpl;
+import live.kavinduj.theserenitymhtc.dto.PatientDTO;
 import live.kavinduj.theserenitymhtc.dto.PaymentDTO;
+import live.kavinduj.theserenitymhtc.dto.TherapySessionDTO;
+import live.kavinduj.theserenitymhtc.entity.Patient;
+import live.kavinduj.theserenitymhtc.entity.Payment;
+import live.kavinduj.theserenitymhtc.entity.TherapySession;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +21,8 @@ public class PaymentBOImpl implements PaymentBO {
 
     @Override
     public boolean save(PaymentDTO payment) {
-        return false;
+        Payment paymentEntity = toEntity(payment);
+        return paymentDAO.save(paymentEntity);
     }
 
     @Override
@@ -32,7 +37,13 @@ public class PaymentBOImpl implements PaymentBO {
 
     @Override
     public List<PaymentDTO> getAll() {
-        return List.of();
+        List<Payment> all = paymentDAO.getAll();
+        List<PaymentDTO> paymentDTOList = new ArrayList<>();
+        for (Payment payment : all) {
+            PaymentDTO paymentDTO = toDTO(payment);
+            paymentDTOList.add(paymentDTO);
+        }
+        return paymentDTOList;
     }
 
     @Override
@@ -48,5 +59,43 @@ public class PaymentBOImpl implements PaymentBO {
     @Override
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
         return false;
+    }
+
+    public static PaymentDTO toDTO(Payment payment) {
+        if (payment == null) return null;
+
+        PatientDTO patientDTO = new PatientDTO();
+        patientDTO.setId(payment.getPatient().getId());
+
+        TherapySessionDTO sessionDTO = new TherapySessionDTO();
+        sessionDTO.setId(payment.getTherapySession().getId());
+
+        return new PaymentDTO(
+                payment.getId(),
+                payment.getAmount(),
+                payment.getDate(),
+                payment.getStatus(),
+                patientDTO,
+                sessionDTO
+        );
+    }
+
+    public static Payment toEntity(PaymentDTO dto) {
+        if (dto == null) return null;
+
+        Patient patient = new Patient();
+        patient.setId(dto.getPatient().getId());
+
+        TherapySession session = new TherapySession();
+        session.setId(dto.getTherapySession().getId());
+
+        return new Payment(
+                dto.getId(),
+                dto.getAmount(),
+                dto.getDate(),
+                dto.getStatus(),
+                patient,
+                session
+        );
     }
 }

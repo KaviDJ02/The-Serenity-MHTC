@@ -123,4 +123,7 @@ public class TherapyProgramBOImpl implements TherapyProgramBO {
         );
     }
 
+    public double getAmount(String programName) {
+        return therapyProgramDAO.getAmount(programName);
+    }
 }

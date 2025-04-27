@@ -27,11 +27,11 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
                <children>
-                  <Label fx:id="therapistsCount" styleClass="count-label" text="0">
+                  <Label fx:id="therapistsCount" styleClass="count-label" text="02">
                      <HBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin></Label>
-                  <Label styleClass="caption-label" text="Sessions Today">
+                  <Label styleClass="caption-label" text="Therapists">
                      <HBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin></Label>
@@ -49,7 +49,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
                <children>
-                  <Label fx:id="patientsCount" styleClass="count-label" text="0">
+                  <Label fx:id="patientsCount" styleClass="count-label" text="03">
                      <HBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin></Label>
@@ -74,7 +74,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
                <children>
-                  <Label fx:id="programsCount" styleClass="count-label" text="0">
+                  <Label fx:id="programsCount" styleClass="count-label" text="05">
                      <HBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin></Label>
@@ -96,7 +96,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
                <children>
-                  <Label fx:id="sessionsCount" styleClass="count-label" text="0">
+                  <Label fx:id="sessionsCount" styleClass="count-label" text="10">
                      <HBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin></Label>

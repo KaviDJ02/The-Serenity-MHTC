@@ -5,37 +5,16 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="mainAnchor" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../styles/LogIn.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="live.kavinduj.theserenitymhtc.controller.LogInController">
    <children>
-      <Rectangle height="600.0" width="500.0" AnchorPane.leftAnchor="0.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.20000000298023224" green="0.6000000238418579" blue="0.800000011920929" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.05925925821065903" green="1.0" blue="0.21604938805103302" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-
-      <Text layoutX="120.0" layoutY="300.0" styleClass="logo-text" text="Therapy Center" />
 
       <VBox alignment="CENTER" layoutX="550.0" layoutY="150.0" prefHeight="300.0" prefWidth="350.0" spacing="20.0" styleClass="form-card">
          <effect>
@@ -68,5 +47,10 @@
             </HBox>
          </children>
       </VBox>
+      <ImageView fitHeight="600.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

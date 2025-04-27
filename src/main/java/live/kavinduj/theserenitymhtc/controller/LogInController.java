@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import live.kavinduj.theserenitymhtc.bo.BOFactory;
 import live.kavinduj.theserenitymhtc.bo.custom.impl.UserBOImpl;
 import live.kavinduj.theserenitymhtc.dto.UserDTO;
+import live.kavinduj.theserenitymhtc.exeception.InvalidCredentialsException;
+import live.kavinduj.theserenitymhtc.exeception.NotFoundException;
 import live.kavinduj.theserenitymhtc.util.PasswordUtils;
 
 import java.io.IOException;
@@ -36,47 +38,46 @@ public class LogInController {
         String userName = txtEmail.getText();
         String password = txtPassword.getText();
 
-        if(userName.isEmpty() || password.isEmpty()){
-            System.out.println("Empty");
-            return;
-        }
+        try {
+            if (userName.isEmpty() || password.isEmpty()) {
+                throw new IllegalArgumentException("Email or password cannot be empty");
+            }
 
-        boolean result = userBO.cheackUser(userName);
+            boolean userExists = userBO.cheackUser(userName);
+            if (!userExists) {
+                throw new NotFoundException("User not found with the provided email");
+            }
 
-        if(result){
             UserDTO userDTO = userBO.cheackPassword(userName);
+            String hashedPassword = userDTO.getPassword();
+            boolean isPasswordValid = PasswordUtils.verifyPassword(password, hashedPassword);
+
+            if (!isPasswordValid) {
+                throw new InvalidCredentialsException("Invalid password");
+            }
 
             String role = userDTO.getRole();
-            String hashedDTO = userDTO.getPassword();
-
-            System.out.println("In controller" + hashedDTO);
-            System.out.println(role);
-
-            boolean isPasswordValid = PasswordUtils.verifyPassword(password, hashedDTO);
-
-            if(!isPasswordValid){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Invalid password");
-                alert.show();
-            }else {
-                if(role.equals("Admin")){
-                    mainAnchor.getChildren().clear();
-                    mainAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/AdminDash.fxml")));
-                }else if(role.equals("Receptionist")){
-                    mainAnchor.getChildren().clear();
-                    mainAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/ReceptionistDash.fxml")));
-                }
+            if (role.equals("Admin")) {
+                mainAnchor.getChildren().clear();
+                mainAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/AdminDash.fxml")));
+            } else if (role.equals("Receptionist")) {
+                mainAnchor.getChildren().clear();
+                mainAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/ReceptionistDash.fxml")));
             }
-        }else{
+
+        } catch (NotFoundException | InvalidCredentialsException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Invalid email");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        } catch (IllegalArgumentException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
-
     }
 
     @FXML
@@ -84,5 +85,4 @@ public class LogInController {
         mainAnchor.getChildren().clear();
         mainAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/SignUp.fxml")));
     }
-
 }

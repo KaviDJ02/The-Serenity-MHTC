@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Table(name = "therapy_programs")
-public class TherapyProgram implements SuperEntity{
+public class TherapyProgram {
 
     @Id
     private String programId;

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "payments")
-public class Payment implements SuperEntity {
+public class Payment {
     @Id
     private String id;
     private double amount;

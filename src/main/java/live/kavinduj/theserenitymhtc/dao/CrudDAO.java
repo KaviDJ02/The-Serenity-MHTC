@@ -1,12 +1,10 @@
 package live.kavinduj.theserenitymhtc.dao;
 
-import live.kavinduj.theserenitymhtc.entity.SuperEntity;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public interface CrudDAO<T extends SuperEntity, ID> extends SuperDAO {
+public interface CrudDAO<T, ID> extends SuperDAO {
 
     boolean save(T t);
     boolean update(T t);

@@ -1,50 +1,71 @@
+
 .root {
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: #ffffff;
 }
 
-.Label {
-    -fx-text-fill: #2c3e50;
+/* Header label styling */
+.header-label {
+    -fx-text-fill: #006400;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
 }
 
-.HBox {
-    -fx-spacing: 10px;
+/* Form labels */
+.label {
+    -fx-text-fill: #2c3e50; /* Dark gray text */
+    -fx-font-size: 14px;
 }
 
-.Button {
-    -fx-background-color: #388e3c;
-    -fx-text-fill: white;
-    -fx-background-radius: 5;
-    -fx-padding: 10px;
+/* Error message styling */
+#errorMessage {
+    -fx-text-fill: #e74c3c; /* Red for error messages */
+    -fx-font-size: 12px;
 }
 
-.Button:hover {
-    -fx-background-color: #66bb6a;
+/* Buttons */
+.button {
+    -fx-background-color: #2ecc71; /* Green background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
 }
 
-.TableView {
-    -fx-background-color: white;
-    -fx-border-color: #e0e0e0;
+/* Button hover effect */
+.button:hover {
+    -fx-background-color: #27ae60; /* Darker green on hover */
 }
 
-.TableColumn {
-    -fx-text-fill: #2c3e50;
+/* Button pressed effect */
+.button:pressed {
+    -fx-background-color: #1e8449; /* Even darker green when pressed */
 }
 
-.TextField {
-    -fx-background-color: white;
-    -fx-border-color: #e0e0e0;
-    -fx-border-radius: 5;
+/* Table styling */
+.table-view {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #006400; /* Green border */
+    -fx-border-radius: 5px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #b6f4b6; /* Green header background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-weight: bold;
+}
+
+/* ChoiceBox and TextField styling */
+.choice-box, .text-field {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #006400; /* Green border */
+    -fx-border-radius: 5px;
     -fx-padding: 5px;
 }
 
-.TextField:focused {
-    -fx-border-color: #388e3c;
-}
-
-.error-message {
-    -fx-text-fill: red;
-}
-
-.Label {
-    -fx-font-size: 12pt;
+/* Labels for form fields */
+.form-label-bold {
+    -fx-text-fill: #006400; /* Green text */
+    -fx-font-weight: bold;
 }

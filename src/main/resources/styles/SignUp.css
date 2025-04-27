@@ -7,7 +7,7 @@ Rectangle {
 }
 
 Text {
-    -fx-fill: white;
+    -fx-fill: #000000;
 }
 
 .form-container {

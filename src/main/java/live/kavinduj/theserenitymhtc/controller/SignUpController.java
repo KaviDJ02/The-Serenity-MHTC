@@ -4,8 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import live.kavinduj.theserenitymhtc.bo.BOFactory;
 import live.kavinduj.theserenitymhtc.bo.custom.impl.UserBOImpl;
 import live.kavinduj.theserenitymhtc.dto.UserDTO;
@@ -41,7 +44,7 @@ public class SignUpController implements Initializable {
     private final UserBOImpl userBO = (UserBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
 
     @FXML
-    void navLogInPage(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+    void SignupBtnOnAction(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
 
         String userName = txtUserName.getText();
         String password = txtPassword.getText();
@@ -85,7 +88,13 @@ public class SignUpController implements Initializable {
         boolean result = userBO.save(userDTO);
 
         if(result){
-            mainAnchor.getChildren().add(FXMLLoader.load(getClass().getResource("/view/LogIn.fxml")));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LogIn.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.show();
+            Stage stage1 = (Stage) mainAnchor.getScene().getWindow();
+            stage1.close();
+            stage.setTitle("Log In");
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -99,5 +108,15 @@ public class SignUpController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceRole.getItems().addAll("Admin", "Receptionist");
+    }
+
+    public void navLogInPage(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LogIn.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.show();
+        Stage stage1 = (Stage) mainAnchor.getScene().getWindow();
+        stage1.close();
+        stage.setTitle("Log In");
     }
 }

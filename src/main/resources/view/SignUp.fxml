@@ -40,7 +40,7 @@
       </Rectangle>
 
       <!-- Therapy center logo/branding text -->
-      <Text fill="WHITE" layoutX="92.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Therapy Center" wrappingWidth="315.46875">
+      <Text fill="#fffcfc" layoutX="92.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Therapy Center" wrappingWidth="315.46875">
          <font>
             <Font name="Arial Bold" size="42.0" />
          </font>
@@ -114,7 +114,7 @@
                </children>
             </HBox>
 
-            <Button fx:id="btSignUp" mnemonicParsing="false" onAction="#navLogInPage" prefHeight="40.0" prefWidth="290.0" styleClass="button" text="Sign Up" textFill="WHITE">
+            <Button fx:id="btSignUp" mnemonicParsing="false" onAction="#SignupBtnOnAction" prefHeight="40.0" prefWidth="290.0" styleClass="button" text="Sign Up" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

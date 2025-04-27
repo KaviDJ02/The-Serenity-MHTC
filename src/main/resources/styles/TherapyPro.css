@@ -1,63 +1,73 @@
-/* General styling */
-* {
-    -fx-font-family: "System";
-}
+/* File: src/main/resources/styles/TherapyProgram.css */
 
+/* General root styling */
 .root {
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: #ffffff; /* White background */
 }
 
-.label {
-    -fx-text-fill: #2c3e50;
-}
-
-.button {
-    -fx-font-size: 12px;
+/* Header label styling */
+.header-label {
+    -fx-text-fill: #008000; /* Light green text */
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-padding: 5px 15px;
 }
 
-.button:default {
-    -fx-background-color: #2ecc71;
-    -fx-text-fill: white;
+/* Form labels */
+.label {
+    -fx-text-fill: #2c3e50; /* Dark gray text */
+    -fx-font-size: 14px;
 }
 
-.button#btnUpdate {
-    -fx-background-color: #f39c12;
+/* Error message styling */
+#errorMessage {
+    -fx-text-fill: #e74c3c; /* Red for error messages */
+    -fx-font-size: 12px;
 }
 
-.button#btnDelete {
-    -fx-background-color: #e74c3c;
+/* Buttons */
+.button {
+    -fx-background-color: #90ee90; /* Light green background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
 }
 
-.button#btnReset {
-    -fx-background-color: #3498db;
+/* Button hover effect */
+.button:hover {
+    -fx-background-color: #76c776; /* Slightly darker light green on hover */
 }
 
+/* Button pressed effect */
+.button:pressed {
+    -fx-background-color: #5ca05c; /* Even darker light green when pressed */
+}
+
+/* Table styling */
 .table-view {
-    -fx-background-color: white;
-    -fx-border-color: #2c3e50;
-    -fx-border-width: 1px;
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #008000; /* Light green border */
+    -fx-border-radius: 5px;
 }
 
-.table-column {
-    -fx-text-fill: #2c3e50;
+.table-view .column-header {
+    -fx-background-color: #bdf5bd; /* Light green header background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-weight: bold;
 }
 
-.text-field {
-    -fx-font-size: 12px;
+/* ChoiceBox and TextField styling */
+.choice-box, .text-field {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #008000; /* Light green border */
+    -fx-border-radius: 5px;
     -fx-padding: 5px;
 }
 
-.choice-box {
-    -fx-font-size: 12px;
-    -fx-padding: 5px;
-}
-
-.hbox, .vbox {
-    -fx-spacing: 15px;
-}
-
-.hbox > .button, .vbox > .button {
-    -fx-spacing: 10px;
+/* Labels for form fields */
+.form-label-bold {
+    -fx-text-fill: #008000; /* Light green text */
+    -fx-font-weight: bold;
 }

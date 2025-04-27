@@ -53,7 +53,7 @@
                                 </HBox>
                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                                     <children>
-                                        <Label prefHeight="17.0" prefWidth="82.0" text="Specialization:" textFill="#2c3e50">
+                                        <Label prefHeight="20.0" prefWidth="97.0" text="Specialization:" textFill="#2c3e50">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -125,7 +125,7 @@
                     <columns>
                         <TableColumn fx:id="colId" prefWidth="100.0" text="ID" />
                         <TableColumn fx:id="colName" prefWidth="250.0" text="Name" />
-                        <TableColumn fx:id="colSpecialization" prefWidth="350.0" text="Specialization" />
+                        <TableColumn fx:id="colSpecialization" prefWidth="386.39998168945317" text="Specialization" />
                     </columns>
                     <VBox.margin>
                         <Insets />

@@ -1,0 +1,51 @@
+.root {
+    -fx-background-color: #ffffff;
+}
+
+.label {
+    -fx-text-fill: #2e7d32;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: #2e7d32;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #1b5e20;
+}
+
+.text-field {
+    -fx-border-color: #2e7d32;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.choice-box {
+    -fx-border-color: #2e7d32;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.date-picker {
+    -fx-border-color: #2e7d32;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.table-view {
+    -fx-border-color: #2e7d32;
+    -fx-table-cell-border-color: #2e7d32;
+    -fx-background-color: #ffffff;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+}
+
+.error-label {
+    -fx-text-fill: #c62828;
+}

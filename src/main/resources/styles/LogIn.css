@@ -29,7 +29,7 @@
 }
 
 .signin-button {
-    -fx-background-color: linear-gradient(to right, #38b6ff, #6a67ce);
+    -fx-background-color: linear-gradient(to right, #42f6e6, #06d60b);
     -fx-background-radius: 5;
     -fx-text-fill: white;
     -fx-font-size: 14px;
@@ -42,7 +42,7 @@
 }
 
 .link-text {
-    -fx-fill: #4a6bff;
+    -fx-fill: #48f43c;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-cursor: hand;
